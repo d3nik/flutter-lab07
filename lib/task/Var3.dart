@@ -11,10 +11,20 @@ class _Var3State extends State<Var3> {
   int _green = 0;
   int _blue = 0;
 
-  _onChangeColor(int redValue, int blueValue, int greenValue) {
+  _onChangeRed(int redValue) {
     setState(() {
       _red = redValue;
+    });
+  }
+
+  _onChangeBlue(int blueValue) {
+    setState(() {
       _blue = blueValue;
+    });
+  }
+
+  _onChangeGreen(int greenValue) {
+    setState(() {
       _green = greenValue;
     });
   }
@@ -46,7 +56,24 @@ class _Var3State extends State<Var3> {
           min: 0,
           max: 255,
           onChanged: (value) {
-            _onChangeColor(value.toInt(), _green, _blue);
+            _onChangeRed(value.toInt());
+          },
+        ),
+
+        const SizedBox(height: 16),
+
+        Row(
+          children: [
+            const Text("Green: "),
+            Text(_green.toStringAsFixed(2), style: const TextStyle(fontWeight: FontWeight.bold),),
+          ],
+        ),
+        Slider(
+          value: _green.toDouble(),
+          min: 0,
+          max: 255,
+          onChanged: (value) {
+            _onChangeGreen(value.toInt());
           },
         ),
 
@@ -63,27 +90,9 @@ class _Var3State extends State<Var3> {
             min: 0,
             max: 255,
             onChanged: (value) {
-              _onChangeColor(_red, _green, value.toInt());
+              _onChangeBlue(value.toInt());
             },
           ),
-
-        const SizedBox(height: 64),
-
-        Row(
-          children: [
-            const Text("Green: "),
-            Text(_green.toStringAsFixed(2), style: const TextStyle(fontWeight: FontWeight.bold),),
-          ],
-        ),
-        Slider(
-          value: _green.toDouble(),
-          min: 0,
-          max: 255,
-          onChanged: (value) {
-            _onChangeColor(_red, value.toInt(), _blue);
-          },
-        ),
-
       ]
     );
   }
