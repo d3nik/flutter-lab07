@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import '../providers/Provider.dart';
 import './customContainer.dart';
 import './sliders.dart';
 
@@ -9,18 +7,17 @@ class Var3 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<ColorProvider>(context);
 
     return const Column(
         children:[
 
-          const SizedBox(height: 16),
+          SizedBox(height: 16),
 
-          const CustomContainer(),
+          CustomContainer(),
 
-          const SizedBox(height: 20),
+          SizedBox(height: 20),
 
-          const Sliders(),
+          Sliders(),
       ]
     );
   }
